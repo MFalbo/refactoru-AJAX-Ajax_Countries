@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var countries = require('./countries');
+var countries = require('./countries.json');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -14,6 +14,14 @@ app.get('/', function(req, res) {
 
 app.get('/countries', function(req,res){
 	res.send(countries);
+})
+
+app.get('/search', function(req, res){
+	var searchCountry = countries.filter(function(obj){
+		return  obj.name === req.query.country;
+	});
+
+	res.send(searchCountry);
 })
 
 var server = app.listen(4821, function() {
