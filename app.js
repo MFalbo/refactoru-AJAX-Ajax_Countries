@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var countries = require('./countries');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -12,7 +13,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/countries', function(req,res){
-	res.send("TEST")
+	res.send(countries);
 })
 
 var server = app.listen(4821, function() {
