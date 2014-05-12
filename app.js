@@ -2,6 +2,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var countries = require('./countries.json');
 
+for(var i=0; i<countries.length; i++){
+	countries[i]['traveled'] = false;
+}
+
 var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
